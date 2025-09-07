@@ -20,6 +20,7 @@ let winLose = document.querySelector(".winLose");
 let choice;
 
 choicesRef.addEventListener("click", (event) => {
+  if (event.target.id == "") return;
   if (humanScore < 5 && computerScore < 5) {
     const humanChoice = getHumanChoice(event);
     const computerChoice = getComputerChoice();
