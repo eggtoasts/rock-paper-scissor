@@ -102,9 +102,7 @@ body {
   font-size: 24px;
   flex: 0;
 
-  border: 3px solid rgb(21, 21, 21);
-
-  overflow: auto;
+  /* overflow: auto; */
 }
 
 button {
@@ -112,6 +110,12 @@ button {
   /* opacity: 0.6; */
   transition: 0.3s;
   padding: 20px;
+
+  font-weight: 500;
+
+  background-color: white;
+  border: 3px solid rgb(21, 21, 21);
+  color: black;
 }
 button:hover {
   transform: scale(1.1);
@@ -159,5 +163,9 @@ button:hover {
 }
 
 body {
-  background-color: rgb(255, 255, 255);
+  background-color: white;
+}
+
+h2 {
+  font-weight: 400px;
 }
