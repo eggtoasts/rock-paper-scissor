@@ -1,5 +1,5 @@
 //Rock beats scissors, scissors beat paper, paper beats rock
-const choices = ["rock", "scissors", "paper"];
+const choices = ["Rock 🪨", "Scissors ✂️", "Paper 📄"];
 
 let humanScore = 0,
   computerScore = 0;
@@ -13,6 +13,8 @@ const computerText = document.querySelector(".computer");
 const humanPickedText = document.querySelector(".humanPicked");
 const computerPickedText = document.querySelector(".computerPicked");
 
+const roundText = document.querySelector(".round");
+
 let winLose = document.querySelector(".winLose");
 
 let choice;
@@ -25,6 +27,8 @@ choicesRef.addEventListener("click", (event) => {
     playRound(humanChoice, computerChoice);
 
     if (humanScore == 5 || computerScore == 5) {
+      roundText.textContent = "";
+
       //Displays win/lose
       displayWinOrLose(humanScore, computerScore);
 
@@ -43,44 +47,43 @@ choicesRef.addEventListener("click", (event) => {
 
         winLose.removeChild(winLoseText);
       });
+    } else {
+      //Displays the round outcome
+      displayRound(humanScore, computerScore);
     }
   }
 });
-
-function winDisplay() {
-  const newDiv = document.createElement("div");
-  const winText = document.createElement("h2");
-
-  winText.textContent = "You lose!";
-  winText.setAttribute("class", "winLoseText");
-  winText.style["align-self"] = "center";
-
-  winLose.appendChild(winText);
-}
 
 function pickedDisplay(humanChoice, computerChoice) {
   humanPickedText.textContent = `${humanChoice}`;
   computerPickedText.textContent = `${computerChoice}`;
 }
 
+function winDisplay() {
+  const winText = document.createElement("h2");
+
+  winText.textContent = "You win!";
+  winText.setAttribute("class", "win winLoseText");
+
+  winLose.appendChild(winText);
+}
+
 function loseDisplay() {
-  const newDiv = document.createElement("div");
   const loseText = document.createElement("h2");
 
   loseText.textContent = "You lose!";
-  loseText.setAttribute("class", "winLoseText");
+  loseText.setAttribute("class", "lose winLoseText");
+  //   loseText.setAttribute("class", "winLoseText");
 
   winLose.appendChild(loseText);
 }
 
 function displayWinOrLose(humanScore, computerScore) {
-  winLose = document.querySelector(".winLose");
   if (humanScore > computerScore) {
     winDisplay();
   } else {
     loseDisplay();
   }
-  winLose = document.querySelector(".winLose");
 }
 
 function resetGame() {
@@ -109,15 +112,19 @@ function checkChoice(humanChoice, computerChoice) {
   pickedDisplay(humanChoice, computerChoice);
   if (humanChoice === computerChoice) {
     console.log("You tie!~");
+
+    roundText.textContent = "You both tied this round!";
   } else if (
     (choices.findIndex((e) => e === humanChoice) + 1) % 3 ==
     choices.findIndex((e) => e === computerChoice)
   ) {
     console.log("You win!~");
     humanScore++;
+    roundText.textContent = "You won the round!";
   } else {
     console.log("You lose!~");
     computerScore++;
+    roundText.textContent = "You lost the round!";
   }
 
   updateScore();

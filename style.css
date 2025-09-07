@@ -6,12 +6,17 @@
   font-size: 20px;
 }
 
-h1,
+.round {
+  min-height: 30px;
+  min-width: 400px;
+}
+
 .winLose {
-  margin-bottom: 50px;
+  margin-bottom: 35px;
 }
 
 h1 {
+  margin-top: 20px;
   font-size: 50px;
 }
 
@@ -23,15 +28,20 @@ h1 {
   justify-content: center;
   align-self: center;
   align-items: center;
-  max-width: 750px;
-  overflow: auto;
+}
+
+button {
+  padding: 10px;
 }
 
 .container {
+  margin: 20px;
+  padding: 10px;
   max-height: 750px;
   min-height: 300px;
   min-width: 400px;
   max-width: 750px;
+
   display: flex;
 
   align-items: center;
@@ -39,26 +49,25 @@ h1 {
   justify-content: center;
   align-self: center;
 
-  background-color: ;
   border-radius: 25px;
 
   flex: 1;
 
-  border: 2px solid blue;
+  /* border: 2px solid blue; */
 }
 
 .item {
   flex: 0;
 
-  border: 2px solid red;
+  /* border: 2px solid red; */
   justify-content: center;
   align-items: center;
   display: flex;
 }
 
-span {
+/* span {
   border: 2px solid green;
-}
+} */
 
 .left,
 .right {
@@ -81,31 +90,39 @@ body {
 .score,
 .output,
 .choices {
-  min-width: 100vh;
-  min-height: 120px;
+  max-width: 700px;
+  min-width: 600px;
+
+  min-height: 100px;
 }
 
 .button {
-  padding: 30px 60px;
+  min-width: 150px;
+  padding: 30px 30px;
   font-size: 24px;
+  flex: 0;
+
+  border: 3px solid rgb(21, 21, 21);
+
+  overflow: auto;
 }
 
 button {
   border-radius: 20px;
-  opacity: 0.6;
+  /* opacity: 0.6; */
   transition: 0.3s;
   padding: 20px;
 }
 button:hover {
   transform: scale(1.1);
-  background-color: grey;
+  background-color: rgb(178, 178, 178);
   transition: all 0.3 ease;
   opacity: 1;
 }
 
 .choices {
   gap: 20px;
-  justify-content: space-evenly;
+  justify-content: space-around;
 }
 
 .winLose {
@@ -113,6 +130,34 @@ button:hover {
   min-height: 50px;
 }
 
+.winLoseText {
+  padding: 20px;
+  border-radius: 25px;
+}
 .score {
   flex-direction: column;
+}
+
+/* colors */
+
+.container {
+  color: white;
+  background-color: rgb(73, 124, 244);
+  border: 3px solid rgb(0, 0, 0);
+}
+
+.lose {
+  background-color: rgb(251, 141, 141);
+  color: red;
+  border: 3px solid rgb(255, 0, 0);
+}
+
+.win {
+  background-color: rgb(0, 126, 23);
+  color: rgb(0, 255, 47);
+  border: 3px solid rgb(0, 255, 47);
+}
+
+body {
+  background-color: rgb(255, 255, 255);
 }
