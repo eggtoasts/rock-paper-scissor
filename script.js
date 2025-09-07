@@ -10,6 +10,11 @@ const scoreContainer = document.querySelector(".score");
 const humanText = document.querySelector(".human");
 const computerText = document.querySelector(".computer");
 
+const humanPickedText = document.querySelector(".humanPicked");
+const computerPickedText = document.querySelector(".computerPicked");
+
+let winLose = document.querySelector(".winLose");
+
 let choice;
 
 choicesRef.addEventListener("click", (event) => {
@@ -20,32 +25,70 @@ choicesRef.addEventListener("click", (event) => {
     playRound(humanChoice, computerChoice);
 
     if (humanScore == 5 || computerScore == 5) {
+      //Displays win/lose
       displayWinOrLose(humanScore, computerScore);
+
       //Add a new button asking the user to restart.
       const restartButton = document.createElement("button");
       restartButton.textContent = "Play Again?";
+      restartButton.style.marginTop = "15px";
       scoreContainer.appendChild(restartButton);
 
       restartButton.addEventListener("click", () => {
         resetGame();
 
         scoreContainer.removeChild(restartButton);
+
+        let winLoseText = document.querySelector(".winLoseText");
+
+        winLose.removeChild(winLoseText);
       });
     }
   }
 });
 
+function winDisplay() {
+  const newDiv = document.createElement("div");
+  const winText = document.createElement("h2");
+
+  winText.textContent = "You lose!";
+  winText.setAttribute("class", "winLoseText");
+  winText.style["align-self"] = "center";
+
+  winLose.appendChild(winText);
+}
+
+function pickedDisplay(humanChoice, computerChoice) {
+  humanPickedText.textContent = `${humanChoice}`;
+  computerPickedText.textContent = `${computerChoice}`;
+}
+
+function loseDisplay() {
+  const newDiv = document.createElement("div");
+  const loseText = document.createElement("h2");
+
+  loseText.textContent = "You lose!";
+  loseText.setAttribute("class", "winLoseText");
+
+  winLose.appendChild(loseText);
+}
+
 function displayWinOrLose(humanScore, computerScore) {
+  winLose = document.querySelector(".winLose");
   if (humanScore > computerScore) {
-    alert("u win");
+    winDisplay();
   } else {
-    alert("u lose!");
+    loseDisplay();
   }
+  winLose = document.querySelector(".winLose");
 }
 
 function resetGame() {
   humanScore = 0;
   computerScore = 0;
+
+  humanPickedText.textContent = "???";
+  computerPickedText.textContent = "???";
 
   updateScore();
 }
@@ -63,6 +106,7 @@ function getHumanChoice(event) {
 
 //Compares choices and determines who wins/loses.
 function checkChoice(humanChoice, computerChoice) {
+  pickedDisplay(humanChoice, computerChoice);
   if (humanChoice === computerChoice) {
     console.log("You tie!~");
   } else if (

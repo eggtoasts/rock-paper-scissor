@@ -8,25 +8,39 @@
     <link rel="stylesheet" href="./style.css" />
   </head>
   <body>
-    <h1>Rock Paper Scissors!</h1>
     <div class="container">
-      <div class="choices">
-        <button id="rock">Rock</button>
-        <button id="paper">Paper</button>
-        <button id="scissors">Scissor</button>
-      </div>
-      <div class="output">
-        <span>You picked...</span>
-        <span>Rock</span>
-        <span>The computer picked...</span>
-        <span>Rock</span>
-      </div>
+      <div class="subContainer">
+        <h1 class="item">Rock Paper Scissors!</h1>
 
-      <div class="score">
-        <span>You:</span>
-        <span class="human">0</span>
-        <span>Computer:</span>
-        <span class="computer">0</span>
+        <div class="winLose item"></div>
+        <div class="choices item">
+          <button class="button" id="rock">Rock 🪨</button>
+          <button class="button" id="paper">Paper 📄</button>
+          <button class="button" id="scissors">Scissors ✂️</button>
+        </div>
+        <div class="output item">
+          <div class="left">
+            <span>You picked...</span>
+            <h2 class="humanPicked">???</h2>
+          </div>
+
+          <div class="right">
+            <span>Computer picked...</span>
+            <h2 class="computerPicked">???</h2>
+          </div>
+        </div>
+
+        <div class="score item">
+          <h2>Score</h2>
+          <div class="block">
+            <span>You:</span>
+            <span class="human">0</span>
+          </div>
+          <div class="block">
+            <span>Computer:</span>
+            <span class="computer">0</span>
+          </div>
+        </div>
       </div>
     </div>
   </body>
