@@ -121,11 +121,11 @@ function checkChoice(humanChoice, computerChoice) {
   ) {
     console.log("You win!~");
     humanScore++;
-    roundText.textContent = "You won the round!";
+    roundText.textContent = "You won the round! 🎉";
   } else {
     console.log("You lose!~");
     computerScore++;
-    roundText.textContent = "You lost the round!";
+    roundText.textContent = "You lost the round! 😔";
   }
 
   updateScore();
