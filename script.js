@@ -13,6 +13,9 @@ const computerText = document.querySelector(".computer");
 const humanPickedText = document.querySelector(".humanPicked");
 const computerPickedText = document.querySelector(".computerPicked");
 
+const winLoseText = document.querySelector(".winLoseText");
+const restartButton = document.querySelector(".resetButton");
+
 const roundText = document.querySelector(".round");
 
 let winLose = document.querySelector(".winLose");
@@ -28,29 +31,17 @@ choicesRef.addEventListener("click", (event) => {
     playRound(humanChoice, computerChoice);
 
     if (humanScore == 5 || computerScore == 5) {
-      roundText.textContent = "";
-
+      //Toggles a reset button asking the user to restart.
+      winLose.setAttribute("class", "winLose item opacity");
+      restartButton.setAttribute("class", "resetButton opacity");
       //Displays win/lose
       displayWinOrLose(humanScore, computerScore);
 
-      //Add a new button asking the user to restart.
-      const restartButton = document.createElement("button");
-      restartButton.textContent = "Play Again?";
-      restartButton.style.marginTop = "15px";
-      scoreContainer.appendChild(restartButton);
-
       restartButton.addEventListener("click", () => {
+        winLose.setAttribute("class", "winLose item");
+        restartButton.setAttribute("class", "resetButton");
         resetGame();
-
-        scoreContainer.removeChild(restartButton);
-
-        let winLoseText = document.querySelector(".winLoseText");
-
-        winLose.removeChild(winLoseText);
       });
-    } else {
-      //Displays the round outcome
-      displayRound(humanScore, computerScore);
     }
   }
 });
@@ -61,22 +52,13 @@ function pickedDisplay(humanChoice, computerChoice) {
 }
 
 function winDisplay() {
-  const winText = document.createElement("h2");
-
-  winText.textContent = "You win!";
-  winText.setAttribute("class", "win winLoseText");
-
-  winLose.appendChild(winText);
+  winLoseText.textContent = "You win!";
+  winLoseText.setAttribute("class", "winLoseText win");
 }
 
 function loseDisplay() {
-  const loseText = document.createElement("h2");
-
-  loseText.textContent = "You lose!";
-  loseText.setAttribute("class", "lose winLoseText");
-  //   loseText.setAttribute("class", "winLoseText");
-
-  winLose.appendChild(loseText);
+  winLoseText.textContent = "You lose!";
+  winLoseText.setAttribute("class", "winLoseText lose");
 }
 
 function displayWinOrLose(humanScore, computerScore) {
@@ -93,6 +75,8 @@ function resetGame() {
 
   humanPickedText.textContent = "???";
   computerPickedText.textContent = "???";
+
+  roundText.textContent = "Reach 5 points to win!";
 
   updateScore();
 }

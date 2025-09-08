@@ -12,6 +12,7 @@
 }
 
 .winLose {
+  margin-top: 20px;
   margin-bottom: 35px;
 }
 
@@ -101,7 +102,7 @@ body {
   padding: 30px 30px;
   font-size: 24px;
   flex: 0;
-
+  opacity: 1;
   /* overflow: auto; */
 }
 
@@ -117,7 +118,8 @@ button {
   border: 3px solid rgb(21, 21, 21);
   color: black;
 }
-button:hover {
+
+.button:hover {
   transform: scale(1.1);
   background-color: rgb(178, 178, 178);
   transition: all 0.3 ease;
@@ -132,6 +134,8 @@ button:hover {
 .winLose {
   min-width: 150px;
   min-height: 50px;
+
+  opacity: 0;
 }
 
 .winLoseText {
@@ -140,6 +144,11 @@ button:hover {
 }
 .score {
   flex-direction: column;
+}
+
+.resetButton {
+  margin-top: 20px;
+  opacity: 0;
 }
 
 /* colors */
@@ -168,4 +177,8 @@ body {
 
 h2 {
   font-weight: 400px;
+}
+
+.opacity {
+  opacity: 1;
 }
